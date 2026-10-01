@@ -1,0 +1,1218 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Para Mi Amorcito 💛</title>
+    <meta
+      name="description"
+      content="Hay una sorpresa esperándote, mi amor. Ábrela con cariño 💛"
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://para-mi-amorcito-mu.vercel.app/" />
+    <meta property="og:title" content="Para Mi Amorcito 💛" />
+    <meta
+      property="og:description"
+      content="Este regalo es para ti. Toca para abrir tu sorpresa ✨"
+    />
+    <meta
+      property="og:image"
+      content="https://para-mi-amorcito-mu.vercel.app/og.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://para-mi-amorcito-mu.vercel.app/og.jpg"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --yellow: #fff200;
+        --cyan: #00d9ff;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: #000;
+        color: #fff;
+        overflow: hidden;
+        font-family:
+          "Comic Sans MS", "Comic Neue", "Chalkboard SE", cursive, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .wreath {
+        position: relative;
+        width: min(96vw, 560px, 92vh);
+        aspect-ratio: 1/1;
+        container-type: inline-size;
+      }
+      .wreath svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: visible;
+      }
+
+      /* ---- crecimiento ---- */
+      .stem {
+        fill: none;
+        stroke: url(#gS);
+        stroke-linecap: round;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: draw var(--dur) cubic-bezier(0.45, 0.05, 0.4, 1) var(--d)
+          forwards;
+      }
+      .stem.tend {
+        stroke: url(#gT);
+      }
+      .leaf {
+        fill: url(#gL);
+        transform-box: fill-box;
+        transform-origin: 0 50%;
+        transform: scale(0);
+        animation: grow 1s cubic-bezier(0.2, 0.8, 0.3, 1.25) var(--d) forwards;
+      }
+      .petal {
+        stroke: #ffe866;
+        stroke-width: 1.3;
+        fill: url(#gF);
+        fill-opacity: 0;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation:
+          draw 1.1s ease-in-out var(--d) forwards,
+          fillin 0.9s ease calc(var(--d) + 0.9s) forwards;
+      }
+      .petal.back {
+        fill: url(#gB);
+        stroke: #f3c04a;
+      }
+      .pt {
+        transform: translate(0, -20px) rotate(0deg) scale(0.2);
+        animation:
+          draw 1.1s ease-in-out var(--d) forwards,
+          fillin 0.9s ease calc(var(--d) + 0.9s) forwards,
+          open 1.5s cubic-bezier(0.2, 0.9, 0.3, 1.12) var(--d) forwards;
+      }
+      .stamen {
+        fill: none;
+        stroke: #e6c08a;
+        stroke-width: 1;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: draw 0.8s ease calc(var(--d) + 1.4s) forwards;
+      }
+      .tip {
+        fill: #f6d3a0;
+        opacity: 0;
+        animation: fillin 0.5s ease calc(var(--d) + 2s) forwards;
+      }
+      .halo {
+        fill: none;
+        stroke: #7df9ff;
+        stroke-width: 0.8;
+        stroke-dasharray: 3 7;
+        opacity: 0;
+        animation: fillin 1.2s ease calc(var(--d) + 1.8s) forwards;
+      }
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      @keyframes fillin {
+        to {
+          fill-opacity: 1;
+          opacity: 1;
+        }
+      }
+      @keyframes grow {
+        to {
+          transform: scale(1);
+        }
+      }
+      @keyframes open {
+        to {
+          transform: translate(0, -20px) rotate(var(--r)) scale(1);
+        }
+      }
+
+      /* ---- neón y movimiento ---- */
+      .glow .flw {
+        animation: neon 3.4s ease-in-out infinite;
+        animation-delay: var(--n, 0s);
+      }
+      .finale.glow .flw {
+        animation-duration: 1.8s;
+      }
+      @keyframes neon {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 2px rgba(255, 225, 0, 0.5))
+            drop-shadow(0 0 7px rgba(255, 200, 0, 0.28));
+        }
+        42%,
+        54% {
+          filter: drop-shadow(0 0 4px rgba(255, 235, 60, 0.8))
+            drop-shadow(0 0 14px rgba(255, 210, 0, 0.45));
+        }
+        48% {
+          filter: drop-shadow(0 0 1px rgba(255, 225, 0, 0.3))
+            drop-shadow(0 0 3px rgba(255, 200, 0, 0.15));
+        }
+      }
+      .sway {
+        transform-box: fill-box;
+        transform-origin: 0 50%;
+      }
+      .glow .sway {
+        animation: sway 4s ease-in-out infinite alternate;
+        animation-delay: var(--w, 0s);
+      }
+      @keyframes sway {
+        to {
+          transform: rotate(4.5deg);
+        }
+      }
+      .fly {
+        position: absolute;
+        width: 0.9cqw;
+        height: 0.9cqw;
+        border-radius: 50%;
+        background: #fff6a0;
+        box-shadow: 0 0 1.6cqw #ffe600;
+        opacity: 0;
+        pointer-events: none;
+        animation: fly var(--t) ease-in-out infinite;
+        animation-delay: var(--dl);
+      }
+      @keyframes fly {
+        0% {
+          opacity: 0;
+          transform: translate(0, 0);
+        }
+        25% {
+          opacity: 0.85;
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--x), -16cqw);
+        }
+      }
+      .heart {
+        position: absolute;
+        bottom: 0;
+        font-size: var(--sz);
+        pointer-events: none;
+        opacity: 0;
+        animation: rise var(--t) ease-out var(--dl) forwards;
+      }
+      @keyframes rise {
+        0% {
+          opacity: 0;
+          transform: translateY(0) scale(0.5);
+        }
+        15% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--x), -95cqw) scale(1.1);
+        }
+      }
+
+      /* ---- intro ---- */
+      .intro,
+      .stage {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .intro {
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.9s ease,
+          visibility 0.9s;
+        padding: 0 24%;
+      }
+      .intro.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .intro.hide {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition-duration: 0.6s;
+      }
+      .intro h1 {
+        margin: 0;
+        font-size: 5.4cqw;
+        color: var(--yellow);
+      }
+      .intro p {
+        margin: 1cqw 0 3.5cqw;
+        font-size: 3.8cqw;
+        color: var(--yellow);
+      }
+      .btn {
+        font: inherit;
+        font-weight: 700;
+        font-size: 3.3cqw;
+        color: #fff;
+        background: var(--cyan);
+        border: 0;
+        border-radius: 999px;
+        padding: 0.65em 1.3em;
+        cursor: pointer;
+        box-shadow: 0 0 18px rgba(0, 217, 255, 0.5);
+        transition: transform 0.2s;
+      }
+      .btn:active {
+        transform: scale(0.95);
+      }
+      .btn:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 3px;
+      }
+
+      /* ---- tarjetas: centradas en el hueco libre de la corona ---- */
+      .stage {
+        pointer-events: none;
+        padding-top: 4cqw;
+      }
+      .card {
+        position: absolute;
+        width: 44cqw;
+        min-height: 24cqw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(145deg, var(--b1), var(--b2));
+        color: var(--tx);
+        border: 0.35cqw solid var(--gl);
+        border-radius: 5cqw;
+        padding: 4cqw 4cqw;
+        font-size: 4.2cqw;
+        line-height: 1.35;
+        text-wrap: balance;
+        box-shadow: 0 0 4.5cqw -0.5cqw var(--gl);
+        opacity: 0;
+        transform: translateY(7cqw) scale(0.9);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s cubic-bezier(0.2, 0.8, 0.3, 1);
+      }
+      .card.in {
+        opacity: 1;
+        transform: none;
+      }
+      .card.out {
+        opacity: 0;
+        transform: translateY(-7cqw) scale(0.9);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease-in;
+      }
+      .card.final {
+        width: 42cqw;
+        height: 33cqw;
+        min-height: 0;
+        flex-direction: column;
+        gap: 2cqw;
+        font-size: 3.3cqw;
+        padding: 2.5cqw;
+        pointer-events: auto;
+      }
+      .card.final .btn {
+        font-size: 2.9cqw;
+      }
+      .wreath .frame {
+        position: absolute;
+        left: -6.1cqw;
+        top: -6.1cqw;
+        width: 54.2cqw;
+        height: 45.5cqw;
+        z-index: -1;
+        pointer-events: none;
+        overflow: visible;
+      }
+      .card.final.in {
+        animation: beat 2s ease-in-out 1s infinite;
+      }
+      @keyframes beat {
+        50% {
+          transform: scale(1.03);
+        }
+      }
+
+      /* capas: las tarjetas siempre por encima de corazones, luciérnagas y pétalos */
+      .stage {
+        z-index: 3;
+      }
+      .intro {
+        z-index: 4;
+      }
+      .fly,
+      .heart {
+        z-index: 1;
+      }
+      /* pétalos que caen de los lirios principales */
+      .pfall {
+        position: absolute;
+        z-index: 1;
+        width: 2.6cqw;
+        height: 4cqw;
+        border-radius: 0 100% 0 100%;
+        background: linear-gradient(160deg, #fff56a, #ffb21a 70%, #ff9ac9);
+        box-shadow: 0 0 1.6cqw rgba(255, 214, 0, 0.55);
+        opacity: 0;
+        pointer-events: none;
+        animation: pfall var(--t) cubic-bezier(0.3, 0.1, 0.5, 1) forwards;
+      }
+      @keyframes pfall {
+        0% {
+          opacity: 0;
+          transform: translate(0, 0) rotate(0);
+        }
+        8% {
+          opacity: 1;
+        }
+        25% {
+          transform: translate(var(--s), calc(var(--dy) * 0.25)) rotate(70deg);
+        }
+        50% {
+          transform: translate(calc(var(--s) * -1), calc(var(--dy) * 0.5))
+            rotate(150deg);
+        }
+        75% {
+          transform: translate(var(--s), calc(var(--dy) * 0.75)) rotate(240deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(calc(var(--s) * -0.5), var(--dy)) rotate(310deg);
+        }
+      }
+      /* efecto al aterrizar: onda de luz + chispas */
+      .ripple {
+        position: absolute;
+        z-index: 1;
+        width: 7cqw;
+        height: 2.2cqw;
+        margin: -1.1cqw 0 0 -3.5cqw;
+        border: 0.35cqw solid rgba(255, 230, 80, 0.9);
+        border-radius: 50%;
+        box-shadow: 0 0 2cqw rgba(255, 214, 0, 0.6);
+        opacity: 0;
+        pointer-events: none;
+        animation: ripple 1.5s ease-out forwards;
+      }
+      @keyframes ripple {
+        0% {
+          opacity: 0.95;
+          transform: scale(0.2);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.9);
+        }
+      }
+      .spark {
+        position: absolute;
+        z-index: 1;
+        width: 0.8cqw;
+        height: 0.8cqw;
+        border-radius: 50%;
+        background: #fff6a0;
+        box-shadow: 0 0 1.4cqw #ffe600;
+        pointer-events: none;
+        animation: spark 1.2s ease-out forwards;
+      }
+      @keyframes spark {
+        0% {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--x), var(--y));
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stem,
+        .leaf,
+        .petal,
+        .pt,
+        .stamen,
+        .tip,
+        .halo {
+          animation-duration: 0.01s !important;
+          animation-delay: 0s !important;
+        }
+      }
+
+      /* cielo estrellado y estrellas fugaces */
+      .star {
+        position: fixed;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background: #fff;
+        opacity: 0.15;
+        pointer-events: none;
+        animation: tw var(--t) ease-in-out var(--dl) infinite alternate;
+      }
+      @keyframes tw {
+        to {
+          opacity: 0.9;
+          transform: scale(1.8);
+        }
+      }
+      .shoot {
+        position: fixed;
+        width: 90px;
+        height: 2px;
+        background: linear-gradient(90deg, #fff, transparent);
+        opacity: 0;
+        pointer-events: none;
+        transform: rotate(35deg);
+        animation: sh 1.2s ease-out forwards;
+      }
+      @keyframes sh {
+        0% {
+          opacity: 1;
+          transform: translate(0, 0) rotate(35deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(260px, 180px) rotate(35deg);
+        }
+      }
+      .wreath {
+        z-index: 2;
+      }
+      /* palabras que aparecen una a una */
+      .card .txt {
+        text-align: center;
+        max-width: 100%;
+        overflow-wrap: break-word;
+      }
+      .card .w {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(1.2cqw);
+        animation: wd 0.6s ease calc(0.5s + var(--k) * 0.16s) forwards;
+      }
+      @keyframes wd {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .card.in {
+        animation: glowc 3s ease-in-out infinite alternate;
+      }
+      @keyframes glowc {
+        to {
+          box-shadow: 0 0 8cqw 0 var(--gl);
+        }
+      }
+      .card.final small {
+        font-size: 2.6cqw;
+        opacity: 0.85;
+      }
+      .fw {
+        position: absolute;
+        z-index: 1;
+        width: 0.9cqw;
+        height: 0.9cqw;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: spark 1.6s ease-out forwards;
+      }
+      .tapfx {
+        position: fixed;
+        z-index: 20;
+        pointer-events: none;
+        font-size: 22px;
+        animation: tapfx 1.2s ease-out forwards;
+      }
+      @keyframes tapfx {
+        0% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(0.5);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(calc(-50% + var(--x)), -160%) scale(1.3);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .star,
+        .shoot,
+        .card .w {
+          animation: none;
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wreath">
+      <svg viewBox="0 0 500 500" aria-hidden="true">
+        <defs>
+          <linearGradient id="gF" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#ff9a1f" />
+            <stop offset=".5" stop-color="#ffe600" />
+            <stop offset=".88" stop-color="#fff56a" />
+            <stop offset="1" stop-color="#ffc2ee" />
+          </linearGradient>
+          <linearGradient id="gB" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#d9780a" />
+            <stop offset="1" stop-color="#ffc21a" />
+          </linearGradient>
+          <linearGradient id="gL" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#065f2a" />
+            <stop offset=".55" stop-color="#0a7f3a" />
+            <stop offset="1" stop-color="#0f9444" />
+          </linearGradient>
+          <linearGradient
+            id="gS"
+            gradientUnits="userSpaceOnUse"
+            x1="250"
+            y1="500"
+            x2="0"
+            y2="0"
+          >
+            <stop offset="0" stop-color="#0e7a36" />
+            <stop offset="1" stop-color="#1c9d4a" />
+          </linearGradient>
+          <linearGradient
+            id="gT"
+            gradientUnits="userSpaceOnUse"
+            x1="250"
+            y1="500"
+            x2="0"
+            y2="0"
+          >
+            <stop offset="0" stop-color="#6fbf3a" />
+            <stop offset="1" stop-color="#a6d85a" />
+          </linearGradient>
+        </defs>
+        <g id="art"></g>
+        <g id="sky"></g>
+      </svg>
+      <div class="stage" id="stage" aria-live="polite"></div>
+      <div class="intro" id="intro">
+        <h1>Para Mi Amorcito ...</h1>
+        <p>Este regalo es para Ti!</p>
+        <button class="btn" id="go">¿Lista para ver la sorpresa?</button>
+      </div>
+    </main>
+
+    <script>
+      const NS = "http://www.w3.org/2000/svg",
+        art = document.getElementById("art");
+      let end = 0;
+      const T = (x) => {
+        end = Math.max(end, x);
+        return x;
+      };
+
+      /* Mide un tallo para pegar hojas/flores en el momento exacto en que el tallo llega ahí */
+      function meas(d) {
+        const p = document.createElementNS(NS, "path");
+        p.setAttribute("d", d);
+        art.appendChild(p);
+        const L = p.getTotalLength();
+        return {
+          at: (f) => {
+            const a = p.getPointAtLength(Math.max(0, f * L - 1)),
+              b = p.getPointAtLength(Math.min(L, f * L + 1)),
+              c = p.getPointAtLength(f * L);
+            return {
+              x: c.x,
+              y: c.y,
+              ang: (Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI,
+            };
+          },
+          rm: () => p.remove(),
+        };
+      }
+      function flower(x, y, r, s, d, i, halo) {
+        const pd =
+          "M0 0 C-17 -8 -24 -30 -6 -50 C0 -56 0 -56 6 -50 C24 -30 17 -8 0 0Z";
+        const P = (rot, cls, dd) =>
+          `<path class="petal pt ${cls}" pathLength="1" style="--d:${dd}s;--r:${rot}deg" d="${pd}"/>`;
+        const S = (x2, y2) =>
+          `<path class="stamen" pathLength="1" style="--d:${d}s" d="M0 -26 Q${x2 / 2} ${(y2 - 26) / 2 - 6} ${x2} ${y2}"/><circle class="tip" style="--d:${d}s" cx="${x2}" cy="${y2}" r="2.4"/>`;
+        T(d + 2.8);
+        return `<g class="flw" style="--n:${(i * 0.9) % 3}s;--d:${d}s" transform="translate(${x} ${y}) rotate(${r}) scale(${s})">
+    ${halo ? '<circle class="halo" cx="0" cy="-42" r="64"/>' : ""}
+    <path class="petal back" pathLength="1" style="--d:${d}s" d="M-3 0 C-6 -8 -9 -16 -10 -22 L10 -22 C9 -16 6 -8 3 0Z"/>
+    ${P(-74, "back", d + 0.1)}${P(74, "back", d + 0.2)}${P(-42, "back", d + 0.3)}${P(42, "back", d + 0.4)}${P(0, "", d + 0.6)}
+    ${S(-16, -68)}${S(0, -78)}${S(16, -68)}</g>`;
+      }
+      function bud(x, y, r, s, d, i) {
+        T(d + 2);
+        return `<g class="flw" style="--n:${i * 0.6}s" transform="translate(${x} ${y}) rotate(${r}) scale(${s})">
+    <path class="petal" pathLength="1" style="--d:${d}s" d="M0 0 C-9 -8 -9 -26 0 -34 C9 -26 9 -8 0 0Z"/>
+    <circle class="tip" style="--d:${d - 1}s;fill:#ff9fb8" cx="0" cy="-36" r="3.6"/></g>`;
+      }
+      function orb(x, y, c, d) {
+        T(d + 1);
+        return `<circle cx="${x}" cy="${y}" r="3" fill="${c}" opacity="0" style="filter:drop-shadow(0 0 4px ${c}) drop-shadow(0 0 9px ${c})">
+    <animate attributeName="opacity" to="1" begin="${d}s" dur=".6s" fill="freeze"/>
+    <animate attributeName="r" values="3;5.5;3" dur="2.6s" begin="${d + 0.6}s" repeatCount="indefinite"/></circle>`;
+      }
+
+      /* tallos: d, inicio, duración, grosor, hojas [fracción, lado, escala], extremo */
+      const S = [
+        {
+          d: "M250 498 C215 465 150 450 100 395 C75 365 65 345 62 322",
+          t: 0,
+          u: 3.2,
+          w: 3.4,
+          lv: [
+            [0.1, -1, 1.7],
+            [0.2, 1, 1.1],
+            [0.33, -1, 1.2],
+            [0.45, 1, 1.5],
+            [0.6, -1, 0.9],
+            [0.75, 1, 1],
+            [0.9, -1, 0.8],
+          ],
+          fl: [1.1, -10, 1],
+        },
+        {
+          d: "M80 385 C40 335 40 255 60 215 C70 190 80 165 85 143",
+          t: 1.2,
+          u: 2.4,
+          w: 2.4,
+          lv: [
+            [0.2, -1, 1],
+            [0.4, 1, 1.1],
+            [0.6, -1, 1.1],
+            [0.8, 1, 0.9],
+          ],
+          fl: [0.95, 15, 0],
+        },
+        {
+          d: "M85 143 C100 110 125 70 140 36",
+          t: 3.5,
+          u: 1.5,
+          w: 2,
+          lv: [
+            [0.5, -1, 0.9],
+            [0.8, 1, 0.8],
+            [1, -1, 1.6],
+            [1, 1, 1.1],
+          ],
+        },
+        {
+          d: "M116 384 C114 360 110 330 112 300",
+          t: 1.9,
+          u: 1.4,
+          w: 1.5,
+          bud: [0.9, 0],
+          c: 1,
+          lv: [
+            [0.4, 1, 0.45],
+            [0.7, -1, 0.4],
+          ],
+        },
+        {
+          d: "M92 262 C88 235 90 205 99 180",
+          t: 2.5,
+          u: 1.3,
+          w: 1.5,
+          bud: [0.8, 6],
+          c: 1,
+          lv: [[0.5, 1, 0.4]],
+        },
+        {
+          d: "M118 415 C140 440 175 455 205 470",
+          t: 1.5,
+          u: 1.6,
+          w: 1.8,
+          fl: [0.4, 0, 0],
+          c: 1,
+          lv: [
+            [0.3, -1, 0.5],
+            [0.6, 1, 0.55],
+          ],
+        },
+        {
+          d: "M62 322 C20 330 5 380 35 395 C55 405 70 385 55 372 C45 365 38 378 46 382",
+          t: 3.0,
+          u: 2.2,
+          w: 1.4,
+          c: 1,
+          orb: "#7df9ff",
+          lv: [
+            [0.25, 1, 0.45],
+            [0.45, -1, 0.4],
+          ],
+        },
+        {
+          d: "M126 118 C165 100 170 60 150 52 C138 48 134 64 146 66",
+          t: 4.4,
+          u: 1.8,
+          w: 1.4,
+          c: 1,
+          orb: "#ff7ad9",
+          lv: [[0.3, 1, 0.45]],
+        },
+        {
+          d: "M62 322 C45 300 30 290 14 292",
+          t: 3.4,
+          u: 1.2,
+          w: 1.4,
+          bud: [0.7, -60],
+          c: 1,
+        },
+        {
+          d: "M64 228 C30 215 8 238 22 254 C30 262 42 252 35 245",
+          t: 2.6,
+          u: 1.8,
+          w: 1.2,
+          c: 1,
+          orb: "#fff2a0",
+        },
+        {
+          d: "M150 455 C180 440 190 465 172 470 C165 472 160 466 165 461",
+          t: 2.4,
+          u: 1.6,
+          w: 1.2,
+          c: 1,
+          orb: "#7df9ff",
+        },
+        { d: "M70 335 C90 372 110 400 118 415", t: 1.8, u: 1.4, w: 1.2, c: 1 },
+        {
+          d: "M96 395 C70 420 50 440 20 452",
+          t: 1.4,
+          u: 1.4,
+          w: 1.6,
+          c: 1,
+          lv: [
+            [0.3, -1, 0.55],
+            [0.55, 1, 0.5],
+            [0.8, -1, 0.5],
+          ],
+        },
+        {
+          d: "M62 300 C80 280 100 270 122 272",
+          t: 3.3,
+          u: 1.2,
+          w: 1.4,
+          c: 1,
+          lv: [
+            [0.4, -1, 0.45],
+            [0.8, 1, 0.45],
+          ],
+        },
+        {
+          d: "M72 215 C95 200 110 180 130 170",
+          t: 2.8,
+          u: 1.2,
+          w: 1.4,
+          c: 1,
+          lv: [
+            [0.4, 1, 0.45],
+            [0.8, -1, 0.45],
+          ],
+        },
+        {
+          d: "M110 90 C95 70 80 55 70 35",
+          t: 4.6,
+          u: 1.0,
+          w: 1.4,
+          c: 1,
+          lv: [[0.5, 1, 0.5]],
+        },
+      ];
+      const LEAF = "M0 0 C7 -8 26 -9 44 0 C27 5 9 8 0 0Z";
+      function grow(S) {
+        let h = "",
+          k = 0;
+        S.forEach((s) => {
+          const m = meas(s.d);
+          h += `<path class="stem ${s.c ? "tend" : ""}" pathLength="1" d="${s.d}" stroke-width="${(s.w * 0.62).toFixed(1)}" style="--d:${s.t}s;--dur:${s.u}s"/>`;
+          (s.lv || [])
+            .concat(
+              s.c
+                ? []
+                : [0.12, 0.27, 0.42, 0.57, 0.72, 0.88].map((f, j) => [
+                    f,
+                    j % 2 ? 1 : -1,
+                    0.5,
+                  ]),
+            )
+            .forEach(([f, side, sc], j) => {
+              const p = m.at(f),
+                dl = s.t + f * s.u;
+              T(dl + 1);
+              h += `<g transform="translate(${p.x} ${p.y}) rotate(${p.ang + side * 58}) scale(${sc})"><g class="sway" style="--w:${(j * 0.4) % 2}s"><path class="leaf" style="--d:${dl}s" d="${LEAF}"/></g></g>`;
+            });
+          const e = m.at(1),
+            dEnd = s.t + s.u;
+          if (s.fl)
+            h += flower(
+              e.x,
+              e.y,
+              e.ang + 90 + s.fl[1],
+              s.fl[0],
+              dEnd,
+              k++,
+              s.fl[2],
+            );
+          if (s.bud)
+            h += bud(e.x, e.y, e.ang + 90 + s.bud[1], s.bud[0], dEnd, k++);
+          if (s.orb) h += orb(e.x, e.y, s.orb, dEnd);
+          /* brillo de luz que viaja en la punta mientras el tallo se dibuja */
+          if (!matchMedia("(prefers-reduced-motion: reduce)").matches)
+            h += `<g opacity="0" style="filter:drop-shadow(0 0 3px #fffbd0) drop-shadow(0 0 8px #ffe600) drop-shadow(0 0 14px #7df9ff)">
+              <circle r="${(s.w * 0.9 + 2.2).toFixed(1)}" fill="#ffe600" opacity=".35"/><circle r="${(s.w * 0.45 + 1.1).toFixed(1)}" fill="#fffef0"/>
+              <animateMotion path="${s.d}" begin="${s.t}s" dur="${s.u}s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.4 1"/>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.04;.9;1" begin="${s.t}s" dur="${s.u + 0.35}s" fill="freeze"/></g>`;
+          m.rm();
+        });
+        return h;
+      }
+      const hMain = grow(S);
+      art.innerHTML = `<g>${hMain}</g><g transform="translate(500 0) scale(-1 1)">${hMain}</g>`;
+
+      /* ramos que brotan alrededor del marco de la tarjeta final (mismo diseño, flores más pequeñas) */
+      const FRAME = [
+        {
+          d: "M80 82 C66 70 54 58 44 44",
+          t: 0.6,
+          u: 1.0,
+          w: 4,
+          lv: [
+            [0.4, -1, 1.3],
+            [0.7, 1, 1.1],
+          ],
+          fl: [0.6, 0, 0],
+        },
+        {
+          d: "M80 458 C66 470 54 482 44 496",
+          t: 0.9,
+          u: 1.0,
+          w: 4,
+          lv: [
+            [0.4, 1, 1.3],
+            [0.7, -1, 1.1],
+          ],
+          fl: [0.6, 0, 0],
+        },
+      ];
+      const frameSVG = () => {
+        const f = grow(FRAME);
+        return `<svg class="frame" viewBox="0 0 620 520" aria-hidden="true"><g>${f}</g><g transform="translate(620 0) scale(-1 1)">${f}</g></svg>`;
+      };
+
+      /* cielo surrealista: luna y estrellas entre las dos mitades */
+      const b = end - 1;
+      document.getElementById("sky").innerHTML = `
+ <path d="M250 22 A20 20 0 1 0 268 54 A15 15 0 1 1 250 22Z" fill="#fff2a0" opacity="0" style="filter:drop-shadow(0 0 5px #ffe600)">
+   <animate attributeName="opacity" to=".95" begin="${b}s" dur="1.2s" fill="freeze"/></path>
+ ${[
+   [228, 66, 1.6],
+   [276, 76, 1.3],
+   [250, 92, 1.8],
+ ]
+   .map(
+     (
+       [x, y, r],
+       i,
+     ) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="0">
+   <animate attributeName="opacity" values="0;1;.3;1" dur="${2 + i * 0.6}s" begin="${b + 0.4 * i}s" repeatCount="indefinite"/></circle>`,
+   )
+   .join("")}`;
+
+      const wreath = document.querySelector(".wreath"),
+        intro = document.getElementById("intro");
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const rnd = (a, c) => a + Math.random() * (c - a);
+      const SRC = [
+        [10.4, 54],
+        [22.6, 20.6],
+        [89.6, 54],
+        [77.4, 20.6],
+      ]; /* centro de los 4 lirios principales (en %) */
+      function petalFall() {
+        const [x0, y0] = SRC[Math.floor(Math.random() * 4)];
+        const x = x0 + rnd(-3, 3),
+          y = y0 + rnd(-3, 3),
+          g = rnd(88, 95),
+          sw = rnd(2, 4);
+        const p = document.createElement("i");
+        p.className = "pfall";
+        p.style.cssText = `left:${x}%;top:${y}%;--dy:${g - y}cqw;--s:${sw}cqw;--t:${rnd(6, 9)}s`;
+        wreath.appendChild(p);
+        p.addEventListener(
+          "animationend",
+          () => {
+            p.remove();
+            splash(x - sw * 0.5, g);
+          },
+          { once: true },
+        );
+      }
+      function splash(x, y) {
+        const r = document.createElement("i");
+        r.className = "ripple";
+        r.style.cssText = `left:${x}%;top:${y}%`;
+        wreath.appendChild(r);
+        setTimeout(() => r.remove(), 1600);
+        for (let q = 0; q < 6; q++) {
+          const e = document.createElement("i");
+          e.className = "spark";
+          e.style.cssText = `left:${x}%;top:${y}%;--x:${rnd(-5, 5)}cqw;--y:${-rnd(3, 7)}cqw`;
+          wreath.appendChild(e);
+          setTimeout(() => e.remove(), 1400);
+        }
+      }
+      setTimeout(
+        () => {
+          intro.classList.add("show");
+          wreath.classList.add("glow");
+          for (let q = 0; q < 16; q++) {
+            const f = document.createElement("i");
+            f.className = "fly";
+            f.style.cssText = `left:${rnd(15, 85)}%;top:${rnd(35, 92)}%;--x:${rnd(-6, 6)}cqw;--t:${rnd(4, 7)}s;--dl:${rnd(0, 5)}s`;
+            wreath.appendChild(f);
+          }
+          petalFall();
+          setTimeout(petalFall, 700);
+          setInterval(petalFall, 1500);
+        },
+        reduce ? 100 : (end + 0.5) * 1000,
+      );
+
+      /* tarjetas: color según la frase (fondo oscuro + texto claro para que siempre se lea) */
+      const msgs = [
+        {
+          t: "Desde que llegaste, todo en mi vida tiene más color 🌈",
+          b1: "#3d1033",
+          b2: "#611a4b",
+          tx: "#ffd9ee",
+          gl: "#ff5fa8",
+        },
+        {
+          t: "Tu sonrisa es mi lugar favorito para quedarme ✨",
+          b1: "#3a2c06",
+          b2: "#5e4a0a",
+          tx: "#fff4b8",
+          gl: "#ffd60a",
+        },
+        {
+          t: "Eres mi calma en los días difíciles y mi risa en los buenos 🌸",
+          b1: "#2c1245",
+          b2: "#4b1f72",
+          tx: "#f1d9ff",
+          gl: "#c77dff",
+        },
+        {
+          t: "Cada día contigo es un regalo que quiero abrir toda la vida 🎁",
+          b1: "#3f0e14",
+          b2: "#651620",
+          tx: "#ffdccf",
+          gl: "#ff6b4a",
+        },
+        {
+          t: "Contigo aprendí que el amor vive en los detalles pequeños 🌼",
+          b1: "#0d3320",
+          b2: "#14522f",
+          tx: "#d9ffe8",
+          gl: "#5ef2a0",
+        },
+        {
+          t: "Si volviera a nacer, te buscaría otra vez entre mil estrellas 🌟",
+          b1: "#0b2945",
+          b2: "#123f6c",
+          tx: "#d8edff",
+          gl: "#4cc9f0",
+        },
+        {
+          t: "Tu abrazo es el único hogar que no necesita paredes 🏡",
+          b1: "#3d1033",
+          b2: "#611a4b",
+          tx: "#ffd9ee",
+          gl: "#ff5fa8",
+        },
+        {
+          t: "No te regalo flores que se marchitan: te regalo un amor que florece cada día 💐",
+          b1: "#3a2c06",
+          b2: "#5e4a0a",
+          tx: "#fff4b8",
+          gl: "#ffd60a",
+        },
+        {
+          t: "Gracias por existir, por quedarte y por amarme tal como soy 💛",
+          b1: "#2c1245",
+          b2: "#4b1f72",
+          tx: "#f1d9ff",
+          gl: "#c77dff",
+        },
+      ];
+
+      /* ---- efectos extra ---- */
+      for (let q = 0; q < 70; q++) {
+        const e = document.createElement("i");
+        e.className = "star";
+        e.style.cssText = `left:${rnd(0, 100)}%;top:${rnd(0, 100)}%;--t:${rnd(1.5, 4)}s;--dl:${rnd(0, 3)}s`;
+        document.body.appendChild(e);
+      }
+      setInterval(() => {
+        const e = document.createElement("i");
+        e.className = "shoot";
+        e.style.cssText = `left:${rnd(0, 70)}%;top:${rnd(0, 35)}%`;
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 1300);
+      }, 4500);
+      const COL = [
+        "#fff6a0",
+        "#ff7ad9",
+        "#7df9ff",
+        "#ffd60a",
+        "#ff9a1f",
+        "#c77dff",
+      ];
+      function burst(x, y, n) {
+        for (let q = 0; q < n; q++) {
+          const a = (q / n) * Math.PI * 2,
+            d = rnd(6, 14),
+            c = COL[q % COL.length];
+          const e = document.createElement("i");
+          e.className = "fw";
+          e.style.cssText = `left:${x}%;top:${y}%;background:${c};box-shadow:0 0 1.6cqw ${c};--x:${Math.cos(a) * d}cqw;--y:${Math.sin(a) * d}cqw`;
+          wreath.appendChild(e);
+          setTimeout(() => e.remove(), 1700);
+        }
+      }
+      function fw() {
+        burst(rnd(15, 85), rnd(10, 45), 18);
+      }
+      document.addEventListener("pointerdown", (ev) => {
+        const e = document.createElement("span");
+        e.className = "tapfx";
+        e.textContent = ["💛", "✨", "🌼", "💕"][Math.floor(rnd(0, 4))];
+        e.style.cssText = `left:${ev.clientX}px;top:${ev.clientY}px;--x:${rnd(-30, 30)}px`;
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 1300);
+      });
+      const stage = document.getElementById("stage");
+      let i = 0,
+        rain = null,
+        fwT = null;
+      const theme = (c, m) =>
+        (c.style.cssText = `--b1:${m.b1};--b2:${m.b2};--tx:${m.tx};--gl:${m.gl}`);
+      function mount(c) {
+        stage.appendChild(c);
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => c.classList.add("in")),
+        );
+      }
+      function leave(c, cb) {
+        c.classList.remove("in");
+        c.classList.add("out");
+        setTimeout(() => {
+          c.remove();
+          cb && cb();
+        }, 900);
+      }
+      function showNext() {
+        if (i >= msgs.length) return finale();
+        const m = msgs[i++],
+          c = document.createElement("div");
+        c.className = "card";
+        c.innerHTML =
+          '<div class="txt">' +
+          m.t
+            .split(" ")
+            .map((w, k) => `<span class="w" style="--k:${k}">${w}</span>`)
+            .join(" ") +
+          "</div>";
+        c.style.setProperty("--len", m.t.length);
+        burst(50, 52, 8);
+        theme(c, m);
+        mount(c);
+        setTimeout(() => leave(c, showNext), 3800 + m.t.length * 55);
+      }
+      function hearts(n) {
+        const E = ["💛", "💕", "🌼", "✨", "💖", "🌻"];
+        for (let q = 0; q < n; q++) {
+          const e = document.createElement("span");
+          e.className = "heart";
+          e.textContent = E[q % E.length];
+          e.style.cssText = `left:${rnd(5, 92)}%;--x:${rnd(-10, 10)}cqw;--sz:${rnd(4, 8)}cqw;--t:${rnd(4, 6.5)}s;--dl:${rnd(0, 2)}s`;
+          wreath.appendChild(e);
+          setTimeout(() => e.remove(), 9000);
+        }
+      }
+      function finale() {
+        wreath.classList.add("finale");
+        const c = document.createElement("div");
+        c.className = "card final";
+        theme(c, {
+          b1: "#4a1a48",
+          b2: "#5e4a0a",
+          tx: "#fff0c2",
+          gl: "#ffd60a",
+        });
+        c.innerHTML =
+          '<div>Eres mi mayor sorpresa<br>y mi lugar favorito.<br><b>Te amo, mi amorcito 💛</b><br><small>Hoy, mañana y siempre.</small></div><button class="btn" id="again">Ver de nuevo</button>';
+        c.insertAdjacentHTML("afterbegin", frameSVG());
+        mount(c);
+        hearts(26);
+        rain = setInterval(() => hearts(10), 3500);
+        fw();
+        fwT = setInterval(fw, 1700);
+        c.querySelector("#again").onclick = () => {
+          clearInterval(rain);
+          clearInterval(fwT);
+          wreath.classList.remove("finale");
+          i = 0;
+          leave(c, showNext);
+        };
+      }
+      document.getElementById("go").addEventListener(
+        "click",
+        () => {
+          intro.classList.remove("show");
+          intro.classList.add("hide");
+          setTimeout(showNext, 600);
+        },
+        { once: true },
+      );
+    </script>
+  </body>
+</html>
